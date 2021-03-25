@@ -53,6 +53,18 @@ class FakeSubscriberRepository implements ISubscribersRepository {
 
     return subscriber;
   }
+
+  public async findByPaid(isPaid: boolean): Promise<Subscriber[]> {
+    const subscriber = this.subscribers.filter(
+      findSubscriber => findSubscriber.isPaid === isPaid,
+    );
+
+    return subscriber;
+  }
+
+  public async findAll(): Promise<Subscriber[]> {
+    return this.subscribers;
+  }
 }
 
 export default FakeSubscriberRepository;

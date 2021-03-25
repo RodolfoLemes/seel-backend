@@ -42,4 +42,20 @@ export default class TypeORMSubscriberRepository
 
     return subscriber;
   }
+
+  public async findByPaid(isPaid: boolean): Promise<Subscriber[]> {
+    const subscribers = await this.ormRepository.find({
+      where: {
+        isPaid,
+      },
+    });
+
+    return subscribers;
+  }
+
+  public async findAll(): Promise<Subscriber[]> {
+    const subscribers = await this.ormRepository.find();
+
+    return subscribers;
+  }
 }

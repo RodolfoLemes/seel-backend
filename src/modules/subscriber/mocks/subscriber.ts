@@ -9,6 +9,5 @@ export default {
   university: 'Universidade Estadual de Maringá',
   phone: '44999999999',
   membership: undefined,
-  ticketType: 'camisa',
-  value: 50,
+  value: 25,
 };

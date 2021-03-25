@@ -9,6 +9,5 @@ export default interface ICreateSubscriberDTO {
   university: string;
   phone: string;
   membership?: string | null;
-  ticketType: string;
   value: number;
 }

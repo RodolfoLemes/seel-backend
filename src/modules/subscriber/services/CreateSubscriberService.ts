@@ -14,7 +14,6 @@ interface IRequest {
   university: string;
   phone: string;
   membership?: string | null;
-  ticketType: string;
   value: number;
 }
 
@@ -36,7 +35,6 @@ export default class CreateSubscribeService {
     university,
     phone,
     membership,
-    ticketType,
     value,
   }: IRequest): Promise<Subscriber> {
     if (await this.subscriberRepository.findByEmail(email))
@@ -59,7 +57,6 @@ export default class CreateSubscribeService {
       university,
       phone,
       membership,
-      ticketType,
       value,
     });
 

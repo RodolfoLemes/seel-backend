@@ -23,11 +23,21 @@ router.post(
       university: Joi.string().required(),
       phone: Joi.string().required(),
       membership: Joi.string(),
-      ticketType: Joi.string().required(),
       value: Joi.number().required(),
     },
   }),
   subscribersController.create,
+);
+
+router.get(
+  '/',
+  celebrate({
+    [Segments.QUERY]: {
+      secret: Joi.string().required(),
+      paid: Joi.string(),
+    },
+  }),
+  subscribersController.list,
 );
 
 export default router;

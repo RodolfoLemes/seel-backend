@@ -7,4 +7,6 @@ export default interface ISubscribersRepository {
   findByEmail(email: string): Promise<Subscriber | undefined>;
   findByCpf(cpf: string): Promise<Subscriber | undefined>;
   findByRg(rg: string): Promise<Subscriber | undefined>;
+  findByPaid(isPaid: boolean): Promise<Subscriber[]>;
+  findAll(): Promise<Subscriber[]>;
 }

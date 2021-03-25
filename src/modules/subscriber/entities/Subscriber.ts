@@ -1,3 +1,4 @@
+import { Expose } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -41,11 +42,14 @@ class Subscriber {
   @Column({ nullable: true })
   membership?: string | null;
 
-  @Column({ name: 'ticket_type', nullable: true })
-  ticketType: string;
-
   @Column({ nullable: false })
   value: number;
+
+  @Expose({ name: 'hasKit' })
+  getHasKit(): boolean {
+    if (this.value === 25) return false;
+    return true;
+  }
 
   @Column({ name: 'is_paid', default: false })
   isPaid: boolean;
