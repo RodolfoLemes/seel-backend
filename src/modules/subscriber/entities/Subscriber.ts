@@ -39,7 +39,7 @@ class Subscriber {
   @Column({ nullable: false })
   phone: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   membership?: string | null;
 
   @Column({ nullable: false })
