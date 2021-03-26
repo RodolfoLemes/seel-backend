@@ -1,15 +1,21 @@
 import AppError from '@shared/errors/AppError';
+import FakeMailProvider from '@shared/container/providers/MailProvider/implementations/FakeMailProvider';
 import FakeSubscriberRepository from '../repositories/implementations/FakeSubscribersRepository';
 import CreateSubscribeService from './CreateSubscriberService';
 import normalSubscriber from '../mocks/subscriber';
 
 let subscriberRepository: FakeSubscriberRepository;
+let mailProvider: FakeMailProvider;
 let createSubscriber: CreateSubscribeService;
 
 describe('create susbcriber', () => {
   beforeEach(async () => {
     subscriberRepository = new FakeSubscriberRepository();
-    createSubscriber = new CreateSubscribeService(subscriberRepository);
+    mailProvider = new FakeMailProvider();
+    createSubscriber = new CreateSubscribeService(
+      subscriberRepository,
+      mailProvider,
+    );
   });
 
   it('should create subscriber', async () => {
