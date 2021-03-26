@@ -1,5 +1,7 @@
+import IMailProvider from '@shared/container/providers/MailProvider/IMailProvider';
 import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
+import path from 'path';
 import Subscriber from '../entities/Subscriber';
 import ISubscribersRepository from '../repositories/ISubscribersRepository';
 
@@ -22,6 +24,9 @@ export default class CreateSubscribeService {
   constructor(
     @inject('SubscribersRepository')
     private subscriberRepository: ISubscribersRepository,
+
+    @inject('MailProvider')
+    private mailProvider: IMailProvider,
   ) {}
 
   public async execute({
@@ -58,6 +63,28 @@ export default class CreateSubscribeService {
       phone,
       membership,
       value,
+    });
+
+    const confirmationSubscriber = path.resolve(
+      __dirname,
+      '..',
+      'views',
+      'emails',
+      'subscribers-confirmation.hbs',
+    );
+
+    this.mailProvider.sendMail({
+      to: {
+        name: subscriber.name,
+        email: subscriber.email,
+      },
+      subject: 'Confirmação da inscrição da IV SEEL',
+      templateData: {
+        file: confirmationSubscriber,
+        variables: {
+          name: subscriber.name,
+        },
+      },
     });
 
     return subscriber;
