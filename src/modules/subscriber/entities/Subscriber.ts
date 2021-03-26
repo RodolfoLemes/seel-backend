@@ -7,10 +7,10 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('subscriber')
+@Entity('subscribers')
 class Subscriber {
-  @PrimaryGeneratedColumn()
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
   @Column({ nullable: false })
   name: string;

@@ -16,7 +16,7 @@ router.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       rg: Joi.string().required(),
-      cpf: custom.document().cnpj(),
+      cpf: custom.document().cpf(),
       cep: Joi.string().required(),
       address: Joi.string().required(),
       city: Joi.string().required(),

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateSubscriberTable1616700500068
+export default class CreateSubscribersTable1616700500068
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
@@ -10,6 +10,7 @@ export default class CreateSubscriberTable1616700500068
           {
             name: 'id',
             type: 'int',
+            isGenerated: true,
             isPrimary: true,
             generationStrategy: 'increment',
           },
