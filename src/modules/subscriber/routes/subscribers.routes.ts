@@ -22,7 +22,7 @@ router.post(
       city: Joi.string().required(),
       university: Joi.string().required(),
       phone: Joi.string().required(),
-      membership: Joi.string(),
+      membership: Joi.string().optional(),
       value: Joi.number().required(),
     },
   }),
