@@ -1,5 +1,3 @@
-import authConfig from '@config/auth';
-import AppError from '@shared/errors/AppError';
 import Subscriber from '../entities/Subscriber';
 import FakeSubscriberRepository from '../repositories/implementations/FakeSubscribersRepository';
 import ListSubscribersService from './ListSubscribersService';
@@ -20,25 +18,14 @@ describe('list subscribers', () => {
   it('should list subscribers', async () => {
     let subscribers;
 
-    subscribers = await listSubscribers.execute({
-      secret: authConfig.secret,
-    });
+    subscribers = await listSubscribers.execute({});
 
     expect(subscribers[0].id).toEqual(subscriber.id);
 
     subscribers = await listSubscribers.execute({
-      secret: authConfig.secret,
       isPaid: false,
     });
 
     expect(subscribers[0].isPaid).toEqual(subscriber.isPaid);
-  });
-
-  it('should not list the subscribers with incorrect secret', async () => {
-    await expect(
-      listSubscribers.execute({
-        secret: '1234567',
-      }),
-    ).rejects.toBeInstanceOf(AppError);
   });
 });
