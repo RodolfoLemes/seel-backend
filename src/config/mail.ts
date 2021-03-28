@@ -29,8 +29,8 @@ export default {
 
   defaults: {
     from: {
-      email: 'ieeeuem@gmail.com',
-      name: 'IEEE UEM',
+      email: 'ivseeluem@gmail.com',
+      name: 'IEEE UEM - IV SEEL',
     },
   },
 } as IMailConfig;
