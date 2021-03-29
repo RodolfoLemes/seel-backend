@@ -34,7 +34,6 @@ router.get(
   '/',
   celebrate({
     [Segments.QUERY]: {
-      secret: Joi.string().required(),
       paid: Joi.string(),
     },
   }),
@@ -46,7 +45,6 @@ router.patch(
   '/',
   celebrate({
     [Segments.BODY]: {
-      secret: Joi.string().required(),
       email: Joi.string().email().optional(),
       rg: Joi.string().optional(),
       cpf: custom.document().cpf().optional(),
