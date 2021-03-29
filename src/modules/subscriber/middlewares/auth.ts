@@ -7,7 +7,7 @@ export default function auth(
   _res: Response,
   next: NextFunction,
 ): void {
-  const { secret } = req.body;
+  const secret = req.headers.authorization;
 
   if (secret !== authConfig.secret) throw new AppError('Forbidden', 403);
 
