@@ -2,7 +2,8 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import { validator } from 'cpf-cnpj-validator';
 import { Router } from 'express';
 
-import authMiddleware from '../middlewares/auth';
+import Authentication from '../middlewares/Authentication';
+import DateAuthorization from '../middlewares/DateAuthorization';
 import SubscribersController from '../controllers/SubscribersController';
 
 const custom = Joi.extend(validator);
@@ -12,6 +13,7 @@ const subscribersController = new SubscribersController();
 
 router.post(
   '/',
+  DateAuthorization,
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
@@ -38,7 +40,7 @@ router.get(
       paid: Joi.string(),
     },
   }),
-  authMiddleware,
+  Authentication,
   subscribersController.list,
 );
 
