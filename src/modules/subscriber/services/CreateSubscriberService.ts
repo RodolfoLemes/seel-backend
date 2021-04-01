@@ -17,6 +17,7 @@ interface IRequest {
   phone: string;
   membership?: string | null;
   value: number;
+  courses: string[];
 }
 
 @injectable()
@@ -41,6 +42,7 @@ export default class CreateSubscribeService {
     phone,
     membership,
     value,
+    courses,
   }: IRequest): Promise<Subscriber> {
     if (await this.subscriberRepository.findByEmail(email))
       throw new AppError('Subscriber with same email is not valid');
@@ -63,6 +65,7 @@ export default class CreateSubscribeService {
       phone,
       membership,
       value,
+      courses,
     });
 
     const confirmationSubscriber = path.resolve(

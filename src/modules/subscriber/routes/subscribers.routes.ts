@@ -25,6 +25,7 @@ router.post(
       phone: Joi.string().required(),
       membership: Joi.string().optional(),
       value: Joi.number().required(),
+      courses: Joi.array().items(Joi.string()),
     },
   }),
   subscribersController.create,
