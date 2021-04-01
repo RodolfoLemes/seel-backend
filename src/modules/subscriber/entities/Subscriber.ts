@@ -51,6 +51,9 @@ class Subscriber {
     return true;
   }
 
+  @Column({ array: true, type: 'varchar' })
+  courses: string[];
+
   @Column({ name: 'is_paid', default: false })
   isPaid: boolean;
 

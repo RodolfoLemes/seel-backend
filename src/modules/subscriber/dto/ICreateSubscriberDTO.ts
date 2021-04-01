@@ -10,4 +10,5 @@ export default interface ICreateSubscriberDTO {
   phone: string;
   membership?: string | null;
   value: number;
+  courses: string[];
 }

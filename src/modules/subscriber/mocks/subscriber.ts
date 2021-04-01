@@ -10,4 +10,9 @@ export default {
   phone: '44999999999',
   membership: undefined,
   value: 25,
+  courses: [
+    'Curso de Estacionamento',
+    'Curso de Estátua',
+    'Curso de Sensibilidade',
+  ],
 };
