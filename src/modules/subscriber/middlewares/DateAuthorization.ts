@@ -10,7 +10,7 @@ export default function DateAuthorization(
 ): void {
   const now = new Date();
   console.info(dateConfig.beginDate);
-  console.info(dataConfig.finalDate);
+  console.info(dateConfig.finalDate);
   if (isBefore(now, dateConfig.beginDate))
     throw new AppError('Subscription is not open yet');
   if (isAfter(now, dateConfig.finalDate))
